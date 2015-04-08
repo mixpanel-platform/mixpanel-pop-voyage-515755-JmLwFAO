@@ -46,6 +46,7 @@
             MP.api.query(endpoint, params).done(function(results) {
               var query = results["data"]["values"]
               console.log(query)
+              var output = {}
               
               _.each(_.keys(query), function(levels){
                 var level = query[levels]
