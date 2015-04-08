@@ -44,12 +44,10 @@
             }
             
             MP.api.query(endpoint, params).done(function(results) {
-              var output = {}
               var query = results["data"]["values"]
               console.log(query)
               
               _.each(_.keys(query), function(levels){
-                output[levels] = {}
                 var level = query[levels]
                 
                 _.each(_.keys(level), function(properties){
@@ -59,6 +57,11 @@
                   _.each(_.keys(property), function(dates){
                     sum = sum + property[dates]
                   });
+                  
+                  debugger
+                  if (sum == 0) {
+                    delete level[properties]
+                  }
                   
                   output[properties][levels] = sum;
                   
