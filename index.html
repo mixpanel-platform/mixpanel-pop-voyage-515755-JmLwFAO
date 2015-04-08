@@ -46,14 +46,13 @@
             MP.api.query(endpoint, params).done(function(results) {
               var output = {}
               var query = results["data"]["values"]
+              console.log(query)
               
               _.each(_.keys(query), function(levels){
+                output[levels] = {}
                 var level = query[levels]
                 
                 _.each(_.keys(level), function(properties){
-                  if (typeof output[properties] == 'undefined') {
-                    output[properties] = {}
-                  }
                   var property = level[properties]
                   var sum = 0;
                 
